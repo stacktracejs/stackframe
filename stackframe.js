@@ -2,7 +2,7 @@
     'use strict';
     // Universal Module Definition (UMD) to support AMD, CommonJS/Node.js, Rhino, and browsers.
     if (typeof define === 'function' && define.amd) {
-        define(['exports'], factory);
+        define([], factory);
     } else if (typeof exports === 'object') {
         module.exports = factory();
     } else {
