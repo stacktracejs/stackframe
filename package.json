@@ -4,7 +4,7 @@
   "author": "Eric Wendelin <me@eriwen.com> (http://eriwen.com)",
   "version": "0.1.0",
   "keywords": ["stacktrace", "error"],
-  "homepage": "http://stacktracejs.com",
+  "homepage": "http://www.stacktracejs.com",
   "repository": {
     "type": "git",
     "url": "git://github.com/stacktracejs/stackframe.git"
