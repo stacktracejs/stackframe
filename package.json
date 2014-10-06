@@ -1,0 +1,20 @@
+{
+  "name": "stackframe",
+  "description": "JS Object representation of a stack frame",
+  "author": "Eric Wendelin <me@eriwen.com> (http://eriwen.com)",
+  "version": "0.1.0",
+  "keywords": ["stacktrace", "error"],
+  "homepage": "http://stacktracejs.com",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/stacktracejs/stackframe.git"
+  },
+  "bugs": {
+    "url": "https://github.com/stacktracejs/stackframe/issues"
+  },
+  "licenses": [{
+    "type": "Public Domain",
+    "url": "https://github.com/stacktracejs/stackframe/blob/master/LICENSE"
+  }],
+  "main": "./stackframe.js"
+}
