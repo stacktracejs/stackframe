@@ -12,11 +12,11 @@ module.exports = function (config) {
             browserName: 'firefox',
             version: '32'
         },
-        sl_safari: {
+        sl_safari_6: {
             base: 'SauceLabs',
-            browser: 'safari',
-            os: 'OS X 10.8',
-            'browser-version': '6'
+            browserName: 'safari',
+            platform: 'OS X 10.8',
+            version: '6'
         },
         sl_ios_safari: {
             base: 'SauceLabs',
@@ -37,6 +37,7 @@ module.exports = function (config) {
             version: '11'
         },
         sl_opera_12: {
+            base: 'SauceLabs',
             browserName: 'opera',
             platform: 'Windows 7',
             version: '12'
@@ -56,6 +57,10 @@ module.exports = function (config) {
         colors: true,
         logLevel: config.LOG_INFO,
         autoWatch: true,
+        browserDisconnectTimeout : 10000,
+        browserDisconnectTolerance : 1,
+        browserNoActivityTimeout : 240000,
+        captureTimeout : 240000,
         sauceLabs: {
             testName: 'stackframe unit tests'
         },
