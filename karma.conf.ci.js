@@ -36,7 +36,6 @@ module.exports = function (config) {
             'spec/*-spec.js'
         ],
         exclude: [],
-        preprocessors: {},
         port: 9876,
         colors: true,
         logLevel: config.LOG_INFO,
@@ -55,7 +54,14 @@ module.exports = function (config) {
         },
         customLaunchers: customLaunchers,
         browsers: Object.keys(customLaunchers),
-        reporters: ['progress', 'saucelabs'],
+        reporters: ['progress', 'saucelabs', 'coverage'],
+        preprocessors: {
+            'stackframe.js': 'coverage'
+        },
+        coverageReporter: {
+            type: 'lcov',
+            dir: 'coverage'
+        },
         singleRun: true
     });
 };

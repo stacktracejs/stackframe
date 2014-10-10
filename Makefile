@@ -1,3 +1,18 @@
+BROWSERS=Firefox,ChromeCanary,Opera,Safari,PhantomJS
+
+test:
+	@$(MAKE) lint
+	@NODE_ENV=test ./node_modules/karma/bin/karma start --single-run --browsers $(BROWSERS)
+
+lint:
+	./node_modules/.bin/jshint ./spec/stackframe-spec.js ./stackframe.js
+
+test-ci:
+	$(MAKE) lint
+	@echo TRAVIS_JOB_ID $(TRAVIS_JOB_ID)
+	@NODE_ENV=test ./node_modules/karma/bin/karma start karma.conf.ci.js --single-run && \
+		cat ./coverage/Chrome*/lcov.info | ./node_modules/coveralls/bin/coveralls.js --verbose
+
 browser:
 	open spec/spec-runner.html
 
@@ -11,6 +26,6 @@ components: component.json
 	@component install --dev
 
 clean:
-	rm -fr build components template.js
+	rm -fr build coverage components template.js
 
-.PHONY: clean
+.PHONY: clean test
