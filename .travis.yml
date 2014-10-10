@@ -1,12 +1,13 @@
 language: node_js
 node_js:
-  - '0.10'
+- '0.10'
 install:
-  - npm install
-  - npm install bower -g
-  - bower install
+- npm install
+- npm install bower -g
+- bower install
 addons:
-  sauce_connect:
-    username: stacktracejs
-    access_key:
-      secure: 'UbjhIohImOtfAhz9pWUq6Xg5BAOrdRy1VQ2LJVxcUFmec/xY7pMupMj7Ul0fdYMdXwXG/hH9LUxU0zhJ4ktlfcfuIwQ7KyQ79QoxtnXifw34REREUHtwEpx/F1sOzMLjUoTzR+4EhRSfni8cgV0KKmkB9jSR7hp5uhOIPSoCqrU='
+  sauce_connect: true
+env:
+  global:
+  - secure: WrorXhIe0hgRgvaBzNK6PSQEw2VTHKCxqkkNXqIY80eESXETC9nw0WkeALa6Neu06G2K6PxCXuVnaDAAtEarkawiY2OD1jrQEeYm9/2Mnqj8K2f92y57a3uVmUmo4+sqRTj6Ub3q0+/hLhluRWGTNia3kmW8cJKKG6cyWxCwb/o=
+  - secure: WwBqBCm1q/iIM11n3cBPCwt5X+q62WxlfQGK4KPHlikjUExgLgksc5/ae8TwFwHpL3cL5P4h4I5MfrIK++9vFrn7CICVMkI0LeLTgXCaeUThWP43FsPvG1GrWAJYeXeRk8kc/5gBT+/8x5FxZUunvivIu+gYrqX+Ip7xwfcbGlo=
