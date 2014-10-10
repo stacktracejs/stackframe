@@ -2,8 +2,9 @@ language: node_js
 node_js:
   - '0.10'
 install:
-  - bower install
   - npm install
+  - npm install bower -g
+  - bower install
 addons:
   sauce_connect:
     username: stacktracejs
