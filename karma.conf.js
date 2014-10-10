@@ -13,6 +13,12 @@ module.exports = function (config) {
         sl_firefox: {
             base: 'SauceLabs',
             browserName: 'firefox'
+        },
+        sl_ie_11: {
+            base: 'SauceLabs',
+            browserName: 'internet explorer',
+            platform: 'Windows 8.1',
+            version: '11'
         }
     };
 
@@ -27,7 +33,7 @@ module.exports = function (config) {
         preprocessors: {},
         port: 9876,
         colors: true,
-        logLevel: config.LOG_DEBUG,
+        logLevel: config.LOG_INFO,
         autoWatch: true,
         browserDisconnectTimeout : 10000,
         browserDisconnectTolerance : 1,
