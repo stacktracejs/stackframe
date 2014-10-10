@@ -1,15 +1,14 @@
 {
     "name": "stackframe",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "main": "./stackframe.js",
-    "homepage": "https://github.com/stacktracejs/stackframe.js",
+    "homepage": "https://github.com/stacktracejs/stackframe",
     "authors": [
         "Eric Wendelin <me@eriwen.com>"
     ],
     "description": "JS Object representation of a stack frame",
     "devDependencies": {
-        "jasmine": "~1.3.1",
-        "jasmine-jstd-adapter": "~1.1.2"
+        "jasmine": "~1.3.1"
     },
     "moduleType": [
         "amd",
