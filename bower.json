@@ -7,9 +7,6 @@
         "Eric Wendelin <me@eriwen.com>"
     ],
     "description": "JS Object representation of a stack frame",
-    "devDependencies": {
-        "jasmine": "~1.3.1"
-    },
     "moduleType": [
         "amd",
         "globals",
@@ -27,7 +24,7 @@
     "license": "Public Domain",
     "ignore": [
         "**/.*",
-        "bower_components",
-        "node_modules"
+        "node_modules",
+        "spec"
     ]
 }
