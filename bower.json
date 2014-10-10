@@ -22,11 +22,13 @@
         "backtrace",
         "cross-browser",
         "framework-agnostic",
-        "error"
+        "error",
+        "debugger"
     ],
     "license": "Public Domain",
     "ignore": [
         "**/.*",
-        "bower_components"
+        "bower_components",
+        "node_modules"
     ]
 }
