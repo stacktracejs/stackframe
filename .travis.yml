@@ -1,0 +1,11 @@
+language: node_js
+node_js:
+  - '0.10'
+install:
+  - bower install
+  - npm install
+addons:
+  sauce_connect:
+    username: stacktracejs
+    access_key:
+      secure: 'UbjhIohImOtfAhz9pWUq6Xg5BAOrdRy1VQ2LJVxcUFmec/xY7pMupMj7Ul0fdYMdXwXG/hH9LUxU0zhJ4ktlfcfuIwQ7KyQ79QoxtnXifw34REREUHtwEpx/F1sOzMLjUoTzR+4EhRSfni8cgV0KKmkB9jSR7hp5uhOIPSoCqrU='
