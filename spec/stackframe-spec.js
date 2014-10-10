@@ -29,7 +29,11 @@ describe('StackFrame', function () {
 
         it('throws an error given anything but an Array', function() {
             expect(function() {unit.setArgs('BOGUS')}).toThrow(new TypeError('Args must be an Array'));
-            expect(function() {unit.setArgs([])}).not.toThrow();
+        });
+
+        it('returns args that were set', function() {
+            unit.setArgs(['foo', 42, {}]);
+            expect(unit.getArgs()).toEqual(['foo', 42, {}]);
         });
     });
 
