@@ -1,34 +1,18 @@
 module.exports = function (config) {
+    if (!process.env.SAUCE_USERNAME || !process.env.SAUCE_ACCESS_KEY) {
+        console.log('Make sure the SAUCE_USERNAME and SAUCE_ACCESS_KEY environment variables are set.');
+        process.exit(1);
+    }
+
     // Check out https://saucelabs.com/platforms for all browser/platform combos
     var customLaunchers = {
         sl_chrome: {
             base: 'SauceLabs',
-            browserName: 'chrome',
-            platform: 'Windows 7',
-            version: '37'
+            browserName: 'chrome'
         },
         sl_firefox: {
             base: 'SauceLabs',
-            browserName: 'firefox',
-            version: '32'
-        },
-        sl_safari_6: {
-            base: 'SauceLabs',
-            browserName: 'safari',
-            platform: 'OS X 10.8',
-            version: '6'
-        },
-        sl_ios_safari: {
-            base: 'SauceLabs',
-            browserName: 'iphone',
-            platform: 'OS X 10.9',
-            version: '7.1'
-        },
-        sl_ie_10: {
-            base: 'SauceLabs',
-            browserName: 'internet explorer',
-            platform: 'Windows 7',
-            version: '10'
+            browserName: 'firefox'
         },
         sl_ie_11: {
             base: 'SauceLabs',
@@ -36,11 +20,11 @@ module.exports = function (config) {
             platform: 'Windows 8.1',
             version: '11'
         },
-        sl_opera_12: {
+        sl_ie_9: {
             base: 'SauceLabs',
-            browserName: 'opera',
+            browserName: 'internet explorer',
             platform: 'Windows 7',
-            version: '12'
+            version: '9'
         }
     };
 
@@ -62,11 +46,16 @@ module.exports = function (config) {
         browserNoActivityTimeout : 240000,
         captureTimeout : 240000,
         sauceLabs: {
-            testName: 'stackframe unit tests'
+            testName: 'stackframe unit tests',
+            recordScreenshots: false,
+            connectOptions: {
+                port: 5757,
+                logfile: 'sauce_connect.log'
+            }
         },
         customLaunchers: customLaunchers,
         browsers: Object.keys(customLaunchers),
-        reporters: ['dots', 'saucelabs'],
+        reporters: ['progress', 'saucelabs'],
         singleRun: true
     });
 };
