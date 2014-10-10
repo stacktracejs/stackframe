@@ -10,7 +10,11 @@
     }
 }(this, function () {
     'use strict';
-    var StackFrame = function StackFrame(functionName, args, fileName, lineNumber, columnNumber) {
+    function _isNumber(n) {
+        return !isNaN(parseFloat(n)) && isFinite(n);
+    }
+
+    function StackFrame(functionName, args, fileName, lineNumber, columnNumber) {
         if (functionName !== undefined) {
             this.setFunctionName(functionName);
         }
@@ -26,7 +30,7 @@
         if (columnNumber !== undefined) {
             this.setColumnNumber(columnNumber);
         }
-    };
+    }
 
     StackFrame.prototype = {
         getFunctionName: function () {
@@ -60,7 +64,7 @@
             return this.lineNumber;
         },
         setLineNumber: function (v) {
-            if (v != Number(v)) {
+            if (!_isNumber(v)) {
                 throw new TypeError('Line Number must be a Number');
             }
             this.lineNumber = Number(v);
@@ -70,7 +74,7 @@
             return this.columnNumber;
         },
         setColumnNumber: function (v) {
-            if (v != Number(v)) {
+            if (!_isNumber(v)) {
                 throw new TypeError('Column Number must be a Number');
             }
             this.columnNumber = Number(v);
