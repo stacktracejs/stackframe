@@ -3,13 +3,14 @@
     "description": "JS Object representation of a stack frame",
     "maintainers": [
         "Eric Wendelin <me@eriwen.com> (http://www.eriwen.com)",
-        "Victor Homyakov (https://github.com/victor-homyakov)"
+        "Victor Homyakov <vkhomyackov@gmail.com> (https://github.com/victor-homyakov)"
     ],
-    "version": "0.1.1",
+    "version": "0.2.0",
     "keywords": [
         "stacktrace",
         "error",
-        "debugger"
+        "debugger",
+        "stack frame"
     ],
     "homepage": "http://www.stacktracejs.com",
     "repository": {
