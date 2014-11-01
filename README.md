@@ -28,6 +28,8 @@ stackFrame.getLineNumber()     // => 325
 stackFrame.columnNumber          // => 3288
 stackFrame.setColumnNumber(20)
 stackFrame.getColumnNumber()     // => 20
+
+stackFrame.toString() // => 'funName(args)@http://localhost:3000/file.js:325:20'
 ```
 
 ## Installation
