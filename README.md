@@ -36,6 +36,5 @@ stackFrame.toString() // => 'funName(args)@http://localhost:3000/file.js:325:20'
 ```
 npm install stackframe
 bower install stackframe
-component install stackframe
-https://raw.githubusercontent.com/stacktracejs/stackframe/master/stackframe.js
+https://raw.githubusercontent.com/stacktracejs/stackframe/master/dist/stackframe.min.js
 ```
