@@ -1,6 +1,0 @@
-{
-    "name": "stackframe",
-    "version": "0.2.0",
-    "main": "./stackframe.js",
-    "dependencies": {}
-}
