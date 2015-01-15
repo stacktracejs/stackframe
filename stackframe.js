@@ -2,7 +2,7 @@
     'use strict';
     // Universal Module Definition (UMD) to support AMD, CommonJS/Node.js, Rhino, and browsers.
     if (typeof define === 'function' && define.amd) {
-        define([], factory);
+        define('stackframe', [], factory);
     } else if (typeof exports === 'object') {
         module.exports = factory();
     } else {
@@ -52,7 +52,8 @@
 
         // NOTE: Property name may be misleading as it includes the path,
         // but it somewhat mirrors V8's JavaScriptStackTraceApi
-        // https://code.google.com/p/v8/wiki/JavaScriptStackTraceApi
+        // https://code.google.com/p/v8/wiki/JavaScriptStackTraceApi and Gecko's
+        // http://mxr.mozilla.org/mozilla-central/source/xpcom/base/nsIException.idl#14
         getFileName: function () {
             return this.fileName;
         },
