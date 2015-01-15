@@ -4,6 +4,8 @@ stackframe - JS Object representation of a stack frame.
 
 Underlies functionality of other modules within [stacktrace.js](http://www.stacktracejs.com).
 
+Written to closely resemble StackFrame representations in [Gecko](http://mxr.mozilla.org/mozilla-central/source/xpcom/base/nsIException.idl#14) and [V8](https://code.google.com/p/v8-wiki/wiki/JavaScriptStackTraceApi)
+
 ## Usage
 ```
 // Create StackFrame and set properties
