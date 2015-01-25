@@ -7,7 +7,7 @@ Underlies functionality of other modules within [stacktrace.js](http://www.stack
 Written to closely resemble StackFrame representations in [Gecko](http://mxr.mozilla.org/mozilla-central/source/xpcom/base/nsIException.idl#14) and [V8](https://code.google.com/p/v8-wiki/wiki/JavaScriptStackTraceApi)
 
 ## Usage
-```
+```js
 // Create StackFrame and set properties
 var stackFrame = new StackFrame('funName', ['args'], 'http://localhost:3000/file.js', 1, 3288);
 
