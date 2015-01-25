@@ -1,27 +1,37 @@
-BROWSERS=Firefox,ChromeCanary,Opera,Safari,PhantomJS
+SHELL := /bin/bash
+PATH := node_modules/.bin:./node_modules/karma/bin:$(PATH)
 
-test: build/jshint.xml
-	@NODE_ENV=test ./node_modules/karma/bin/karma start --single-run --browsers $(BROWSERS)
+sources				:= stackframe.js
+minified            := $(sources:%.js=%.min.js)
+source_map          := $(sources:%.js=%.js.map)
+specs				:= $(wildcard spec/*-spec.js)
+build_files			:= build/jshint.xml
+coveralls			:= node_modules/coveralls/bin/coveralls.js
 
-build/jshint.xml: build
-	./node_modules/.bin/jshint --reporter checkstyle ./spec/stackframe-spec.js ./stackframe.js > build/jshint.xml
+build/jshint.xml: $(sources) $(specs)
+	mkdir -p $(dir $@)
+	node_modules/.bin/jshint $^
+	jshint --reporter checkstyle $^ > $@
 
-test-ci: build/jshint.xml
+test: $(build_files)
+	@NODE_ENV=test karma start --single-run
+
+test-ci: $(build_files)
 	@echo TRAVIS_JOB_ID $(TRAVIS_JOB_ID)
-	@NODE_ENV=test ./node_modules/karma/bin/karma start karma.conf.ci.js --single-run && \
-    	cat ./coverage/Chrome*/lcov.info | ./node_modules/coveralls/bin/coveralls.js --verbose
+	@NODE_ENV=test karma start karma.conf.ci.js --single-run && \
+		cat ./coverage/Chrome*/lcov.info | $(coveralls) --verbose
 
 clean:
 	rm -fr build coverage dist *.log
 
-build:
-	mkdir build
+dist: $(build_files) $(sources)
+	mkdir $@
+	uglifyjs2 $(sources) -o $(minified) --source-map $(source_map)
+	mv $(minified) $(source_map) $@
+	cp $(sources) $@
 
-dist:
-	mkdir dist
-	./node_modules/.bin/uglifyjs2 stackframe.js \
-	 	-o stackframe.min.js --source-map stackframe.js.map
-	mv stackframe.min.js stackframe.js.map dist/
+ci: clean test-ci
 
-.PHONY: clean test dist
+all: clean test dist
 
+.PHONY: all
