@@ -14,7 +14,7 @@
         return !isNaN(parseFloat(n)) && isFinite(n);
     }
 
-    function StackFrame(functionName, args, fileName, lineNumber, columnNumber) {
+    function StackFrame(functionName, args, fileName, lineNumber, columnNumber, source) {
         if (functionName !== undefined) {
             this.setFunctionName(functionName);
         }
@@ -29,6 +29,9 @@
         }
         if (columnNumber !== undefined) {
             this.setColumnNumber(columnNumber);
+        }
+        if (source !== undefined) {
+            this.setSource(source);
         }
     }
 
@@ -79,6 +82,13 @@
                 throw new TypeError('Column Number must be a Number');
             }
             this.columnNumber = Number(v);
+        },
+
+        getSource: function () {
+            return this.source;
+        },
+        setSource: function (v) {
+            this.source = String(v);
         },
 
         toString: function() {

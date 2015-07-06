@@ -88,7 +88,7 @@
             return this.source;
         },
         setSource: function (v) {
-            this.source = v;
+            this.source = String(v);
         },
 
         toString: function() {

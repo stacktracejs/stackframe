@@ -73,12 +73,20 @@ describe('StackFrame', function () {
         });
     });
 
+    describe('#setSource', function() {
+        var unit = new StackFrame();
+        it('coerces input to String', function() {
+            unit.setSource(9999);
+            expect(unit.getSource()).toEqual('9999');
+        });
+    });
+
     describe('#toString', function() {
         it('represents empty StackFrame as "{anonymous}()"', function() {
             expect(new StackFrame().toString()).toEqual('{anonymous}()');
         });
         it('represents complete StackFrame same as old stacktrace.js', function() {
-            var unit = new StackFrame('fun', [1, 2], 'http://site.com/path.js', 1, 4567);
+            var unit = new StackFrame('fun', [1, 2], 'http://site.com/path.js', 1, 4567, 'SOURCE');
             expect(unit.toString()).toEqual('fun(1,2)@http://site.com/path.js:1:4567');
         });
     });
