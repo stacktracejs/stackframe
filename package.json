@@ -37,12 +37,14 @@
     "bugs": {
         "url": "https://github.com/stacktracejs/stackframe/issues"
     },
-    "licenses": [{
-        "type": "Public Domain",
-        "url": "https://github.com/stacktracejs/stackframe/blob/master/LICENSE"
-    }],
+    "licenses": [
+        {
+            "type": "Public Domain",
+            "url": "https://github.com/stacktracejs/stackframe/blob/master/LICENSE"
+        }
+    ],
     "main": "./stackframe.js",
     "scripts": {
-        "test": "make test"
+        "test": "gulp test"
     }
 }
