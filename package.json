@@ -6,6 +6,7 @@
         "Victor Homyakov <vkhomyackov@gmail.com> (https://github.com/victor-homyakov)"
     ],
     "version": "0.3.0",
+    "license": "SEE LICENSE IN LICENSE",
     "keywords": [
         "stacktrace",
         "error",
