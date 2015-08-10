@@ -1,3 +1,4 @@
+var coveralls = require('gulp-coveralls');
 var del = require('del');
 var gulp = require('gulp');
 var jshint = require('gulp-jshint');
@@ -9,13 +10,12 @@ var uglify = require('gulp-uglify');
 
 var sources = 'stackframe.js';
 var minified = sources.replace('.js', '.min.js');
-var sourceMap = sources.replace('.js', '.js.map');
-var specs = './spec/*-spec.js';
 
-gulp.task('lint', function() {
+gulp.task('lint', function () {
     return gulp.src(sources)
         .pipe(jshint())
-        .pipe(jshint.reporter('checkstyle'));
+        .pipe(jshint.reporter('default'))
+        .pipe(jshint.reporter('fail'));
 });
 
 gulp.task('test', function (done) {
@@ -25,7 +25,7 @@ gulp.task('test', function (done) {
     }, done);
 });
 
-gulp.task('test-ci', function (done) {
+gulp.task('test-ci', ['copy', 'dist'], function (done) {
     karma.start({
         configFile: __dirname + '/karma.conf.ci.js',
         singleRun: true
@@ -33,11 +33,11 @@ gulp.task('test-ci', function (done) {
 });
 
 gulp.task('copy', function () {
-    var app = gulp.src(sources)
+    gulp.src(sources)
         .pipe(gulp.dest('dist'));
 });
 
-gulp.task('compress', function() {
+gulp.task('dist', function() {
     return gulp.src(sources)
         .pipe(sourcemaps.init())
         .pipe(uglify())
@@ -46,8 +46,13 @@ gulp.task('compress', function() {
         .pipe(gulp.dest('dist'));
 });
 
-gulp.task('clean', del.bind(null, ['dist']));
+gulp.task('clean', del.bind(null, ['build', 'coverage', 'dist']));
+
+gulp.task('ci', ['lint', 'test-ci'], function () {
+    gulp.src('./coverage/Chrome*/lcov.info')
+        .pipe(coveralls());
+});
 
 gulp.task('default', ['clean'], function (cb) {
-    runSequence('lint', ['copy', 'compress'], cb);
+    runSequence('lint', ['copy', 'dist'], 'test', cb);
 });

@@ -1,6 +1,8 @@
 (function (root, factory) {
     'use strict';
     // Universal Module Definition (UMD) to support AMD, CommonJS/Node.js, Rhino, and browsers.
+
+    /* istanbul ignore next */
     if (typeof define === 'function' && define.amd) {
         define('stackframe', [], factory);
     } else if (typeof exports === 'object') {
