@@ -97,7 +97,7 @@ module.exports = function (config) {
         basePath: '',
         frameworks: ['jasmine'],
         files: [
-            'dist/stackframe.js',
+            'stackframe.js',
             'spec/*-spec.js'
         ],
         exclude: [],

@@ -3,9 +3,10 @@
     "description": "JS Object representation of a stack frame",
     "maintainers": [
         "Eric Wendelin <me@eriwen.com> (http://www.eriwen.com)",
-        "Victor Homyakov <vkhomyackov@gmail.com> (https://github.com/victor-homyakov)"
+        "Victor Homyakov <vkhomyackov@gmail.com> (https://github.com/victor-homyakov)",
+        "Oliver Salzburg (https://github.com/oliversalzburg)"
     ],
-    "version": "0.3.0",
+    "version": "0.3.1",
     "license": "SEE LICENSE IN LICENSE",
     "keywords": [
         "stacktrace",
@@ -19,7 +20,7 @@
         "url": "git://github.com/stacktracejs/stackframe.git"
     },
     "devDependencies": {
-        "colors": "~1.0.3",
+        "colors": "^1.1.2",
         "del": "^1.2.0",
         "gulp": "^3.9.0",
         "gulp-coveralls": "^0.1.4",
@@ -43,14 +44,8 @@
     "bugs": {
         "url": "https://github.com/stacktracejs/stackframe/issues"
     },
-    "licenses": [
-        {
-            "type": "Public Domain",
-            "url": "https://github.com/stacktracejs/stackframe/blob/master/LICENSE"
-        }
-    ],
     "main": "./stackframe.js",
     "scripts": {
-        "test": "gulp clean test"
+        "test": "gulp test"
     }
 }
