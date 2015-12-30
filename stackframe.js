@@ -16,35 +16,37 @@
         return !isNaN(parseFloat(n)) && isFinite(n);
     }
 
-    function StackFrame(functionName, args, fileName, lineNumber, columnNumber, source) {
-        if (functionName !== undefined) {
-            this.setFunctionName(functionName);
+    function _capitalize(str) {
+        if (str.length > 0) {
+            return str[0].toUpperCase() + str.substring(1);
+        } else {
+            return str;
         }
-        if (args !== undefined) {
-            this.setArgs(args);
-        }
-        if (fileName !== undefined) {
-            this.setFileName(fileName);
-        }
-        if (lineNumber !== undefined) {
-            this.setLineNumber(lineNumber);
-        }
-        if (columnNumber !== undefined) {
-            this.setColumnNumber(columnNumber);
-        }
-        if (source !== undefined) {
-            this.setSource(source);
+    }
+
+    var booleanProps = ['constructor', 'eval', 'native', 'toplevel'];
+    var numericProps = ['columnNumber', 'lineNumber'];
+    var stringProps = ['fileName', 'functionName', 'source'];
+    var arrayProps = ['args'];
+
+    function StackFrame(obj) {
+        if (obj instanceof Object) {
+            var props = numericProps.concat(stringProps.concat(arrayProps));
+            for (var i = 0; i < props.length; i++) {
+                if (obj.hasOwnProperty(props[i])) {
+                    this['set' + _capitalize(props[i])](obj[props[i]]);
+                }
+            }
+
+            for (var j = 0; j < booleanProps.length; j++) {
+                if (obj.hasOwnProperty(booleanProps[j])) {
+                    this['setIs' + _capitalize(booleanProps[j])](obj[booleanProps[j]]);
+                }
+            }
         }
     }
 
     StackFrame.prototype = {
-        getFunctionName: function () {
-            return this.functionName;
-        },
-        setFunctionName: function (v) {
-            this.functionName = String(v);
-        },
-
         getArgs: function () {
             return this.args;
         },
@@ -55,45 +57,20 @@
             this.args = v;
         },
 
-        // NOTE: Property name may be misleading as it includes the path,
-        // but it somewhat mirrors V8's JavaScriptStackTraceApi
-        // https://code.google.com/p/v8/wiki/JavaScriptStackTraceApi and Gecko's
-        // http://mxr.mozilla.org/mozilla-central/source/xpcom/base/nsIException.idl#14
-        getFileName: function () {
-            return this.fileName;
+        getEvalOrigin: function () {
+            return this.evalOrigin;
         },
-        setFileName: function (v) {
-            this.fileName = String(v);
-        },
-
-        getLineNumber: function () {
-            return this.lineNumber;
-        },
-        setLineNumber: function (v) {
-            if (!_isNumber(v)) {
-                throw new TypeError('Line Number must be a Number');
+        setEvalOrigin: function (v) {
+            if (v instanceof StackFrame) {
+                this.evalOrigin = v;
+            } else if (v instanceof Object) {
+                this.evalOrigin = new StackFrame(v);
+            } else {
+                throw new TypeError('Eval Origin must be an Object or StackFrame');
             }
-            this.lineNumber = Number(v);
         },
 
-        getColumnNumber: function () {
-            return this.columnNumber;
-        },
-        setColumnNumber: function (v) {
-            if (!_isNumber(v)) {
-                throw new TypeError('Column Number must be a Number');
-            }
-            this.columnNumber = Number(v);
-        },
-
-        getSource: function () {
-            return this.source;
-        },
-        setSource: function (v) {
-            this.source = String(v);
-        },
-
-        toString: function() {
+        toString: function () {
             var functionName = this.getFunctionName() || '{anonymous}';
             var args = '(' + (this.getArgs() || []).join(',') + ')';
             var fileName = this.getFileName() ? ('@' + this.getFileName()) : '';
@@ -102,6 +79,48 @@
             return functionName + args + fileName + lineNumber + columnNumber;
         }
     };
+
+    for (var i = 0; i < booleanProps.length; i++) {
+        StackFrame.prototype['getIs' + _capitalize(booleanProps[i])] = (function (p) {
+            return function () {
+                return this['is' + p];
+            };
+        })(_capitalize(booleanProps[i]));
+        StackFrame.prototype['setIs' + _capitalize(booleanProps[i])] = (function (p) {
+            return function (v) {
+                this['is' + p] = !!v;
+            };
+        })(_capitalize(booleanProps[i]));
+    }
+
+    for (var j = 0; j < numericProps.length; j++) {
+        StackFrame.prototype['get' + _capitalize(numericProps[j])] = (function (p) {
+            return function () {
+                return this[p];
+            };
+        })(numericProps[j]);
+        StackFrame.prototype['set' + _capitalize(numericProps[j])] = (function (p) {
+            return function (v) {
+                if (!_isNumber(v)) {
+                    throw new TypeError(p + ' must be a Number');
+                }
+                this[p] = Number(v);
+            };
+        })(numericProps[j], j);
+    }
+
+    for (var k = 0; k < stringProps.length; k++) {
+        StackFrame.prototype['get' + _capitalize(stringProps[k])] = (function (p) {
+            return function () {
+                return this[p];
+            };
+        })(stringProps[k]);
+        StackFrame.prototype['set' + _capitalize(stringProps[k])] = (function (p) {
+            return function (v) {
+                this[p] = String(v);
+            };
+        })(stringProps[k]);
+    }
 
     return StackFrame;
 }));
