@@ -35,7 +35,7 @@
         if (obj instanceof Object) {
             var props = booleanProps.concat(numericProps.concat(stringProps.concat(arrayProps)));
             for (var i = 0; i < props.length; i++) {
-                if (obj.hasOwnProperty(props[i])) {
+                if (obj.hasOwnProperty(props[i]) && obj[props[i]] !== undefined) {
                     this['set' + _capitalize(props[i])](obj[props[i]]);
                 }
             }
