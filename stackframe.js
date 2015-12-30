@@ -17,30 +17,26 @@
     }
 
     function _capitalize(str) {
-        if (str.length > 0) {
-            return str[0].toUpperCase() + str.substring(1);
-        } else {
-            return str;
-        }
+        return str[0].toUpperCase() + str.substring(1);
     }
 
-    var booleanProps = ['constructor', 'eval', 'native', 'toplevel'];
+    function _getter(p) {
+        return function () {
+            return this[p];
+        };
+    }
+
+    var booleanProps = ['isConstructor', 'isEval', 'isNative', 'isToplevel'];
     var numericProps = ['columnNumber', 'lineNumber'];
     var stringProps = ['fileName', 'functionName', 'source'];
     var arrayProps = ['args'];
 
     function StackFrame(obj) {
         if (obj instanceof Object) {
-            var props = numericProps.concat(stringProps.concat(arrayProps));
+            var props = booleanProps.concat(numericProps.concat(stringProps.concat(arrayProps)));
             for (var i = 0; i < props.length; i++) {
                 if (obj.hasOwnProperty(props[i])) {
                     this['set' + _capitalize(props[i])](obj[props[i]]);
-                }
-            }
-
-            for (var j = 0; j < booleanProps.length; j++) {
-                if (obj.hasOwnProperty(booleanProps[j])) {
-                    this['setIs' + _capitalize(booleanProps[j])](obj[booleanProps[j]]);
                 }
             }
         }
@@ -81,24 +77,16 @@
     };
 
     for (var i = 0; i < booleanProps.length; i++) {
-        StackFrame.prototype['getIs' + _capitalize(booleanProps[i])] = (function (p) {
-            return function () {
-                return this['is' + p];
-            };
-        })(_capitalize(booleanProps[i]));
-        StackFrame.prototype['setIs' + _capitalize(booleanProps[i])] = (function (p) {
+        StackFrame.prototype['get' + _capitalize(booleanProps[i])] = _getter(booleanProps[i]);
+        StackFrame.prototype['set' + _capitalize(booleanProps[i])] = (function (p) {
             return function (v) {
-                this['is' + p] = !!v;
+                this[p] = Boolean(v);
             };
-        })(_capitalize(booleanProps[i]));
+        })(booleanProps[i]);
     }
 
     for (var j = 0; j < numericProps.length; j++) {
-        StackFrame.prototype['get' + _capitalize(numericProps[j])] = (function (p) {
-            return function () {
-                return this[p];
-            };
-        })(numericProps[j]);
+        StackFrame.prototype['get' + _capitalize(numericProps[j])] = _getter(numericProps[j]);
         StackFrame.prototype['set' + _capitalize(numericProps[j])] = (function (p) {
             return function (v) {
                 if (!_isNumber(v)) {
@@ -106,15 +94,11 @@
                 }
                 this[p] = Number(v);
             };
-        })(numericProps[j], j);
+        })(numericProps[j]);
     }
 
     for (var k = 0; k < stringProps.length; k++) {
-        StackFrame.prototype['get' + _capitalize(stringProps[k])] = (function (p) {
-            return function () {
-                return this[p];
-            };
-        })(stringProps[k]);
+        StackFrame.prototype['get' + _capitalize(stringProps[k])] = _getter(stringProps[k]);
         StackFrame.prototype['set' + _capitalize(stringProps[k])] = (function (p) {
             return function (v) {
                 this[p] = String(v);
