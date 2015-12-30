@@ -37,7 +37,7 @@ gulp.task('copy', function () {
         .pipe(gulp.dest('dist'));
 });
 
-gulp.task('dist', function() {
+gulp.task('dist', ['copy'], function() {
     return gulp.src(sources)
         .pipe(sourcemaps.init())
         .pipe(uglify())
