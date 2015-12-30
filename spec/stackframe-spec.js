@@ -8,7 +8,7 @@ describe('StackFrame', function () {
 
         it('throws an error given an illogical line number', function() {
             var fn = function () {
-                new StackFrame('foo', [], 'path/to/file.js', 'BOGUS');
+                new StackFrame({lineNumber: 'BOGUS'});
             };
             expect(fn).toThrow();
         });
@@ -38,6 +38,26 @@ describe('StackFrame', function () {
         });
     });
 
+    describe('#setEvalOrigin', function() {
+        var unit = new StackFrame();
+
+        it('throws an error given a non-Object', function() {
+            expect(function() {
+                unit.setEvalOrigin('BOGUS');
+            }).toThrow(new TypeError('Eval Origin must be an Object or StackFrame'));
+        });
+
+        it('handles given StackFrame', function() {
+            unit.setEvalOrigin(new StackFrame({lineNumber: 2}));
+            expect(unit.getEvalOrigin().getLineNumber()).toEqual(2);
+        });
+
+        it('handles given Object', function() {
+            unit.setEvalOrigin({functionName: 'evalFn'});
+            expect(unit.getEvalOrigin().getFunctionName()).toEqual('evalFn');
+        });
+    });
+
     describe('#setFileName', function() {
         var unit = new StackFrame();
         it('coerces input to String', function() {
@@ -57,7 +77,7 @@ describe('StackFrame', function () {
         });
 
         it('throws an error given input that cannot be coerced', function() {
-            expect(function() { unit.setLineNumber('BOGUS'); }).toThrow(new TypeError('Line Number must be a Number'));
+            expect(function() { unit.setLineNumber('BOGUS'); }).toThrow(new TypeError('lineNumber must be a Number'));
         });
     });
 
@@ -69,7 +89,42 @@ describe('StackFrame', function () {
         });
 
         it('throws an error given input that cannot be coerced', function() {
-            expect(function() { unit.setColumnNumber('BOGUS'); }).toThrow(new TypeError('Column Number must be a Number'));
+            expect(function() { unit.setColumnNumber('BOGUS'); }).toThrow(new TypeError('columnNumber must be a Number'));
+        });
+    });
+
+    describe('#setIsEval', function() {
+        var unit = new StackFrame();
+        it('coerces input to Boolean', function() {
+            unit.setIsEval('true');
+            expect(unit.getIsEval()).toBe(true);
+        });
+    });
+
+    describe('#setIsConstructor', function() {
+        var unit = new StackFrame();
+        it('coerces input to Boolean', function() {
+            unit.setIsConstructor(0);
+            expect(unit.getIsConstructor()).toBe(false);
+            expect(unit.isConstructor).toBe(false);
+        });
+    });
+
+    describe('#setIsNative', function() {
+        var unit = new StackFrame();
+        it('coerces input to Boolean', function() {
+            unit.setIsNative(undefined);
+            expect(unit.getIsNative()).toBe(false);
+            expect(unit.isNative).toBe(false);
+        });
+    });
+
+    describe('#setIsToplevel', function() {
+        var unit = new StackFrame();
+        it('coerces input to Boolean', function() {
+            unit.setIsToplevel(null);
+            expect(unit.getIsToplevel()).toBe(false);
+            expect(unit.isToplevel).toBe(false);
         });
     });
 
@@ -86,7 +141,16 @@ describe('StackFrame', function () {
             expect(new StackFrame().toString()).toEqual('{anonymous}()');
         });
         it('represents complete StackFrame same as old stacktrace.js', function() {
-            var unit = new StackFrame('fun', [1, 2], 'http://site.com/path.js', 1, 4567, 'SOURCE');
+            var unit = new StackFrame({
+                functionName: 'fun',
+                args: [1, 2],
+                fileName: 'http://site.com/path.js',
+                lineNumber: 1,
+                columnNumber: 4567,
+                isEval: false,
+                isNative: false,
+                source: 'SOURCE'
+            });
             expect(unit.toString()).toEqual('fun(1,2)@http://site.com/path.js:1:4567');
         });
     });
