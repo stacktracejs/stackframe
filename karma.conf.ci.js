@@ -16,7 +16,7 @@ module.exports = function (config) {
             base: 'SauceLabs',
             browserName: 'iPhone',
             platform: 'OS X 10.11',
-            version: '9.1'
+            version: '9.2'
         },
         slAndroid4: {
             base: 'SauceLabs',
@@ -119,9 +119,9 @@ module.exports = function (config) {
         ],
         exclude: [],
         port: 9876,
-        colors: true,
+        colors: false,
         logLevel: config.LOG_INFO,
-        autoWatch: true,
+        autoWatch: false,
         browserDisconnectTimeout : 10000,
         browserDisconnectTolerance : 1,
         browserNoActivityTimeout : 240000,
@@ -136,7 +136,7 @@ module.exports = function (config) {
         },
         customLaunchers: customLaunchers,
         browsers: Object.keys(customLaunchers),
-        reporters: ['progress', 'saucelabs', 'coverage'],
+        reporters: ['dots', 'saucelabs', 'coverage'],
         preprocessors: {
             'stackframe.js': 'coverage'
         },
