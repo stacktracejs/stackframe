@@ -56,6 +56,9 @@ stackFrame.getIsNative()       // => true
 stackFrame.toString() // => 'funName(args)@http://localhost:3000/file.js:325:20'
 ```
 
+## Browser Support
+[![Sauce Test Status](https://saucelabs.com/browser-matrix/stacktracejs.svg)](https://saucelabs.com/u/stacktracejs)
+
 ## Installation
 ```
 npm install stackframe
