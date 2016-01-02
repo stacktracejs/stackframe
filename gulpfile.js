@@ -25,6 +25,14 @@ gulp.task('test', function (done) {
     }, done).start();
 });
 
+gulp.task('test-pr', ['copy', 'dist'], function (done) {
+    new karma.Server({
+        configFile: __dirname + '/karma.conf.js',
+        browsers: ['Firefox', 'Chrome'],
+        singleRun: true
+    }, done).start();
+});
+
 gulp.task('test-ci', ['copy', 'dist'], function (done) {
     new karma.Server({
         configFile: __dirname + '/karma.conf.ci.js',
@@ -47,6 +55,8 @@ gulp.task('dist', ['copy'], function() {
 });
 
 gulp.task('clean', del.bind(null, ['build', 'coverage', 'dist']));
+
+gulp.task('pr', ['lint', 'test-pr']);
 
 gulp.task('ci', ['lint', 'test-ci'], function () {
     gulp.src('./coverage/**/lcov.info')
