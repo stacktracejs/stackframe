@@ -31,7 +31,7 @@
     var stringProps = ['fileName', 'functionName', 'source'];
     var arrayProps = ['args'];
     
-    var props = booleanProps.concat(numericProps.concat(stringProps.concat(arrayProps)));
+    var props = booleanProps.concat(numericProps, stringProps, arrayProps);
 
     function StackFrame(obj) {
         if (obj instanceof Object) {
