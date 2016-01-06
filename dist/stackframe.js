@@ -30,10 +30,11 @@
     var numericProps = ['columnNumber', 'lineNumber'];
     var stringProps = ['fileName', 'functionName', 'source'];
     var arrayProps = ['args'];
+    
+    var props = booleanProps.concat(numericProps, stringProps, arrayProps);
 
     function StackFrame(obj) {
         if (obj instanceof Object) {
-            var props = booleanProps.concat(numericProps.concat(stringProps.concat(arrayProps)));
             for (var i = 0; i < props.length; i++) {
                 if (obj.hasOwnProperty(props[i]) && obj[props[i]] !== undefined) {
                     this['set' + _capitalize(props[i])](obj[props[i]]);
