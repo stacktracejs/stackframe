@@ -9,11 +9,11 @@ addons:
     - google-chrome
     packages:
     - google-chrome-stable
+before_install:
+- export CHROME_BIN=chromium-browser
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start
 before_script:
 - npm install
 script:
 - if [ "${TRAVIS_PULL_REQUEST}" = "false" ]; then gulp ci; else gulp pr; fi
-env:
-  global:
-    - secure: VGFNdtgz47pAI9fgXyej0Z10qdcHMjYBgCrHQQLdxDnsEtPqQL77H/TTGgw9xq1wF9BmVM2AS3bCrmHmgZboHaG0QSx813eiNs5ewQvSutrDMpBVqyKcnHvYf3L5WSeOvW8nCcKlh8TTaNSGc27+x0x6UGppI8NfVbZQvjcef5g=
-    - secure: iEbcv7NrXQtl91xn10xl2z+s76a0Isg5WO6RqCAqeXS9/OWgxgbubLFCPZwfdIMYOpdj7U03iaKL1CzOmT5rFOjM/nxyVu9k7q5WYXwW9HnecVPbXGWEQv6VDDV9QH1Lbh/KtwFKl5YJw7nFTzhCnT6g33aocywwAKL6cwjSQn4=
