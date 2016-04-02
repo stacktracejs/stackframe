@@ -1,7 +1,7 @@
 stackframe 
 ==========
 ## JS Object representation of a stack frame
-[![Build Status](https://travis-ci.org/stacktracejs/stackframe.svg?branch=master)](https://travis-ci.org/stacktracejs/stackframe) [![Coverage Status](https://img.shields.io/coveralls/stacktracejs/stackframe.svg)](https://coveralls.io/r/stacktracejs/stackframe?branch=master) [![Code Climate](https://codeclimate.com/github/stacktracejs/stackframe/badges/gpa.svg)](https://codeclimate.com/github/stacktracejs/stackframe)
+[![Build Status](https://travis-ci.org/stacktracejs/stackframe.svg?branch=master)](https://travis-ci.org/stacktracejs/stackframe) [![Coverage Status](https://img.shields.io/coveralls/stacktracejs/stackframe.svg)](https://coveralls.io/r/stacktracejs/stackframe?branch=master) [![GitHub license](https://img.shields.io/github/license/stacktracejs/stackframe.svg)](http://unlicense.org)
 
 Underlies functionality of other modules within [stacktrace.js](https://www.stacktracejs.com).
 
