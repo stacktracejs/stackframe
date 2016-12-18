@@ -11,13 +11,17 @@
         root.StackFrame = factory();
     }
 }(this, function() {
-    'use strict';
     function _isNumber(n) {
         return !isNaN(parseFloat(n)) && isFinite(n);
     }
 
     function _capitalize(str) {
         return str[0].toUpperCase() + str.substring(1);
+    }
+
+    function _inStrictMode() {
+        // TODO: implementation
+        return true;
     }
 
     function _getter(p) {
@@ -40,6 +44,17 @@
                     this['set' + _capitalize(props[i])](obj[props[i]]);
                 }
             }
+        } else if (!_inStrictMode()) {
+            if (console && typeof console.warn === 'function') {
+                console.warn('Constructing StackFrame with an Array is deprecated. ' +
+                    'Please use an Object as described in https://edub.me/stackframe-v1');
+            }
+            var args = Array.prototype.slice.call(arguments);
+            this.setFunctionName(args[0]);
+            this.setArgs(args[1]);
+            this.setFileName(args[2]);
+            this.setLineNumber(args[3]);
+            this.setColumnNumber(args[4]);
         }
     }
 

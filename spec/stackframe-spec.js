@@ -8,6 +8,40 @@ describe('StackFrame', function() {
             }).not.toThrow();
         });
 
+        it('should set properties from given object', function() {
+            var stackFrame = new StackFrame({
+                args: ['ARG1', null],
+                columnNumber: 2,
+                functionName: 'FUNCTION_NAME',
+                fileName: 'FILE_NAME',
+                isConstructor: false,
+                isEval: false,
+                isNative: false,
+                isTopLevel: true,
+                lineNumber: 1,
+                source: 'SOURCE'
+            });
+            expect(stackFrame.args).toEqual(['ARG1', null]);
+            expect(stackFrame.columnNumber).toBe(2);
+            expect(stackFrame.fileName).toBe('FILE_NAME');
+            expect(stackFrame.functionName).toBe('FUNCTION_NAME');
+            expect(stackFrame.isConstructor).toBeFalsy();
+            expect(stackFrame.isEval).toBeFalsy();
+            expect(stackFrame.isNative).toBeFalsy();
+            expect(stackFrame.isTopLevel).toBeFalsy();
+            expect(stackFrame.lineNumber).toBe(1);
+            expect(stackFrame.source).toBe('SOURCE');
+        });
+
+        it('allows construction with v0.x arguments in non-strict mode', function() {
+            var stackFrame = new StackFrame('FUNCTION_NAME', [], 'FILE_NAME', 1, 2);
+            expect(stackFrame.args).toEqual(['ARG1', null]);
+            expect(stackFrame.columnNumber).toBe(2);
+            expect(stackFrame.fileName).toBe('FILE_NAME');
+            expect(stackFrame.functionName).toBe('FUNCTION_NAME');
+            expect(stackFrame.lineNumber).toBe(1);
+        });
+
         it('throws an error given an illogical line number', function() {
             var fn = function() {
                 new StackFrame({lineNumber: 'BOGUS'});
