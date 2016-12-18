@@ -22,7 +22,7 @@
   "devDependencies": {
     "colors": "^1.1.2",
     "del": "^2.2.0",
-    "gulp": "^3.9.0",
+    "gulp": "^3.9.1",
     "gulp-coveralls": "^0.1.4",
     "gulp-jshint": "^2.0.0",
     "gulp-rename": "^1.2.2",
