@@ -6,8 +6,8 @@
     "Victor Homyakov <vkhomyackov@gmail.com> (https://github.com/victor-homyakov)",
     "Oliver Salzburg (https://github.com/oliversalzburg)"
   ],
-  "version": "1.0.2",
-  "license": "Unlicense",
+  "version": "1.0.3",
+  "license": "MIT",
   "keywords": [
     "stacktrace",
     "error",
