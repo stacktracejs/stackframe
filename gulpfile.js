@@ -1,7 +1,6 @@
 var coveralls = require('gulp-coveralls');
 var del = require('del');
 var gulp = require('gulp');
-var jshint = require('gulp-jshint');
 var karma = require('karma');
 var rename = require('gulp-rename');
 var runSequence = require('run-sequence');
@@ -10,13 +9,6 @@ var uglify = require('gulp-uglify');
 
 var sources = 'stackframe.js';
 var minified = sources.replace('.js', '.min.js');
-
-gulp.task('lint', function() {
-    return gulp.src(sources)
-        .pipe(jshint())
-        .pipe(jshint.reporter('default'))
-        .pipe(jshint.reporter('fail'));
-});
 
 gulp.task('test', function(done) {
     new karma.Server({

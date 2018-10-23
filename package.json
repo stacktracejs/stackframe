@@ -22,16 +22,14 @@
   "devDependencies": {
     "colors": "^1.3.2",
     "del": "^3.0.0",
+    "eslint": "^5.7.0",
     "gulp": "^3.9.1",
     "gulp-coveralls": "^0.1.4",
-    "gulp-jshint": "^2.1.0",
     "gulp-rename": "^1.4.0",
     "gulp-sourcemaps": "^2.6.4",
     "gulp-uglify": "^3.0.1",
     "jasmine": "^3.2.0",
     "jasmine-core": "^3.2.1",
-    "jscs": "^3.0.7",
-    "jshint": "^2.9.6",
     "karma": "^3.1.0",
     "karma-chrome-launcher": "^2.2.0",
     "karma-coverage": "^1.1.2",
@@ -39,7 +37,7 @@
     "karma-ie-launcher": "^1.0.0",
     "karma-jasmine": "^1.1.2",
     "karma-opera-launcher": "^1.0.0",
-    "karma-phantomjs2-launcher": "^0.5.0",
+    "karma-phantomjs-launcher": "^1.0.0",
     "karma-safari-launcher": "^1.0.0",
     "karma-sauce-launcher": "^1.2.0",
     "karma-spec-reporter": "0.0.32",
@@ -50,7 +48,8 @@
   },
   "main": "./stackframe.js",
   "scripts": {
+    "lint": " ./node_modules/.bin/eslint stackframe.js spec/stackframe-spec.js",
     "test": "gulp test",
-    "prepublish": "gulp dist"
+    "prepare": "gulp dist"
   }
 }
