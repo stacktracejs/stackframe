@@ -77,6 +77,30 @@
         }
     };
 
+    StackFrame.fromString = function StackFrame$$fromString(str) {
+        var argsStartIndex = str.indexOf('(');
+        var argsEndIndex = str.lastIndexOf(')');
+
+        var functionName = str.substring(0, argsStartIndex);
+        var args = str.substring(argsStartIndex + 1, argsEndIndex).split(',');
+        var locationString = str.substring(argsEndIndex + 1);
+
+        if (locationString.indexOf('@') === 0) {
+            var parts = /@(.+?)(?::(\d+))?(?::(\d+))?$/.exec(locationString, '');
+            var fileName = parts[1];
+            var lineNumber = parts[2];
+            var columnNumber = parts[3];
+        }
+
+        return new StackFrame({
+            functionName: functionName,
+            args: args || undefined,
+            fileName: fileName,
+            lineNumber: lineNumber || undefined,
+            columnNumber: columnNumber || undefined
+        });
+    };
+
     for (var i = 0; i < booleanProps.length; i++) {
         StackFrame.prototype['get' + _capitalize(booleanProps[i])] = _getter(booleanProps[i]);
         StackFrame.prototype['set' + _capitalize(booleanProps[i])] = (function(p) {

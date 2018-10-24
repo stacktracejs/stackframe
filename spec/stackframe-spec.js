@@ -1,5 +1,4 @@
 /* global StackFrame: false */
-/* jshint nonew: false */
 describe('StackFrame', function() {
     describe('#constructor', function() {
         it('should allow empty arguments', function() {
@@ -144,6 +143,20 @@ describe('StackFrame', function() {
         });
     });
 
+    describe('#fromString', function() {
+        it('converts a string into a StackFrame object', function() {
+            var serializedFrame = 'fun(arg1,arg2)@http://site.com/path.js:1:4567';
+            var expected = new StackFrame({
+                functionName: 'fun',
+                args: ['arg1', 'arg2'],
+                fileName: 'http://site.com/path.js',
+                lineNumber: 1,
+                columnNumber: 4567
+            });
+            expect(StackFrame.fromString(serializedFrame)).toEqual(expected);
+        });
+    });
+
     describe('#toString', function() {
         it('represents empty StackFrame as "{anonymous}()"', function() {
             expect(new StackFrame().toString()).toEqual('{anonymous}()');
@@ -151,7 +164,7 @@ describe('StackFrame', function() {
         it('represents complete StackFrame same as old stacktrace.js', function() {
             var unit = new StackFrame({
                 functionName: 'fun',
-                args: [1, 2],
+                args: ['arg1', 'arg2'],
                 fileName: 'http://site.com/path.js',
                 lineNumber: 1,
                 columnNumber: 4567,
@@ -159,7 +172,7 @@ describe('StackFrame', function() {
                 isNative: false,
                 source: 'SOURCE'
             });
-            expect(unit.toString()).toEqual('fun(1,2)@http://site.com/path.js:1:4567');
+            expect(unit.toString()).toEqual('fun(arg1,arg2)@http://site.com/path.js:1:4567');
         });
     });
 });
