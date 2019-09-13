@@ -68,12 +68,20 @@
         },
 
         toString: function() {
-            var functionName = this.getFunctionName() || '{anonymous}';
-            var args = '(' + (this.getArgs() || []).join(',') + ')';
-            var fileName = this.getFileName() ? ('@' + this.getFileName()) : '';
-            var lineNumber = _isNumber(this.getLineNumber()) ? (':' + this.getLineNumber()) : '';
-            var columnNumber = _isNumber(this.getColumnNumber()) ? (':' + this.getColumnNumber()) : '';
-            return functionName + args + fileName + lineNumber + columnNumber;
+            var fileName = this.getFileName() || '';
+            var lineNumber = this.getLineNumber() || '';
+            var columnNumber = this.getColumnNumber() || '';
+            var functionName = this.getFunctionName() || '';
+            if (this.isEval()) {
+                if (fileName) {
+                    return '    at [eval] (' + fileName + ':' + lineNumber + ':' + columnNumber + ')';
+                }
+                return '    at [eval]:' + lineNumber + ':' + columnNumber;
+            }
+            if (functionName) {
+                return '    at ' + functionName + ' (' + fileName + ':' + lineNumber + ':' + columnNumber + ')';
+            }
+            return '    at ' + fileName + ':' + lineNumber + ':' + columnNumber;
         }
     };
 
