@@ -74,14 +74,14 @@
             var functionName = this.getFunctionName() || '';
             if (this.isEval()) {
                 if (fileName) {
-                    return '    at [eval] (' + fileName + ':' + lineNumber + ':' + columnNumber + ')';
+                    return '[eval] (' + fileName + ':' + lineNumber + ':' + columnNumber + ')';
                 }
-                return '    at [eval]:' + lineNumber + ':' + columnNumber;
+                return '[eval]:' + lineNumber + ':' + columnNumber;
             }
             if (functionName) {
-                return '    at ' + functionName + ' (' + fileName + ':' + lineNumber + ':' + columnNumber + ')';
+                return functionName + ' (' + fileName + ':' + lineNumber + ':' + columnNumber + ')';
             }
-            return '    at ' + fileName + ':' + lineNumber + ':' + columnNumber;
+            return fileName + ':' + lineNumber + ':' + columnNumber;
         }
     };
 
