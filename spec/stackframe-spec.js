@@ -158,8 +158,8 @@ describe('StackFrame', function() {
     });
 
     describe('#toString', function() {
-        it('represents empty StackFrame as "{anonymous}()"', function() {
-            expect(new StackFrame().toString()).toEqual('{anonymous}()');
+        it('represents empty StackFrame as "::"', function() {
+            expect(new StackFrame().toString()).toEqual('::');
         });
         it('represents complete StackFrame same as old stacktrace.js', function() {
             var unit = new StackFrame({
@@ -172,7 +172,7 @@ describe('StackFrame', function() {
                 isNative: false,
                 source: 'SOURCE'
             });
-            expect(unit.toString()).toEqual('fun(arg1,arg2)@http://site.com/path.js:1:4567');
+            expect(unit.toString()).toEqual('fun (http://site.com/path.js:1:4567)');
         });
     });
 });
