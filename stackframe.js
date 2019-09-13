@@ -72,7 +72,7 @@
             var lineNumber = this.getLineNumber() || '';
             var columnNumber = this.getColumnNumber() || '';
             var functionName = this.getFunctionName() || '';
-            if (this.isEval()) {
+            if (this.getIsEval()) {
                 if (fileName) {
                     return '[eval] (' + fileName + ':' + lineNumber + ':' + columnNumber + ')';
                 }
