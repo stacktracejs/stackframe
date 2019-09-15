@@ -34,8 +34,9 @@
     var props = booleanProps.concat(numericProps, stringProps, arrayProps);
 
     function StackFrame(obj) {
+        if (!obj) return;
         for (var i = 0; i < props.length; i++) {
-            if (obj && obj[props[i]] !== undefined) {
+            if (obj[props[i]] !== undefined) {
                 this['set' + _capitalize(props[i])](obj[props[i]]);
             }
         }
