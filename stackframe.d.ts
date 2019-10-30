@@ -25,27 +25,27 @@ declare namespace StackFrame {
 declare class StackFrame {
     constructor(obj: StackFrame.StackFrameOptions);
 
-    getArgs(): any[];
+    getArgs(): any[] | undefined;
     setArgs(args: any[]): void;
-    getEvalOrigin(): StackFrame;
+    getEvalOrigin(): StackFrame | undefined;
     setEvalOrigin(stackframe: StackFrame): void;
-    getIsConstructor(): boolean;
+    getIsConstructor(): boolean | undefined;
     setIsConstructor(isConstructor: boolean): void;
-    getIsEval(): boolean;
+    getIsEval(): boolean | undefined;
     setIsEval(isEval: boolean): void;
-    getIsNative(): boolean;
+    getIsNative(): boolean | undefined;
     setIsNative(isNative: boolean): void;
-    getIsToplevel(): boolean;
+    getIsToplevel(): boolean | undefined;
     setIsToplevel(isToplevel: boolean): void;
-    getColumnNumber(): number;
+    getColumnNumber(): number | undefined;
     setColumnNumber(columnNumber: number): void;
-    getLineNumber(): number;
+    getLineNumber(): number | undefined;
     setLineNumber(lineNumber: number): void;
-    getFileName(): string;
+    getFileName(): string | undefined;
     setFileName(fileName: string): void;
-    getFunctionName(): string;
+    getFunctionName(): string | undefined;
     setFunctionName(functionName: string): void;
-    getSource(): string;
+    getSource(): string | undefined;
     setSource(source: string): void;
     toString(): string;
 }
