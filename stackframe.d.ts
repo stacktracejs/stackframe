@@ -3,7 +3,11 @@
 // Definitions by: Eric Wendelin <https://www.eriwen.com>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 
-declare module StackFrame {
+export as namespace StackFrame;  // global for non-module UMD users
+
+export = StackFrame;
+
+declare namespace StackFrame {
     export interface StackFrameOptions {
         isConstructor?: boolean;
         isEval?: boolean;
@@ -16,32 +20,32 @@ declare module StackFrame {
         source?: string;
         args?: any[];
     }
+}
 
-    class StackFrame {
-        constructor(obj: StackFrameOptions);
+declare class StackFrame {
+    constructor(obj: StackFrame.StackFrameOptions);
 
-        getArgs(): any[];
-        setArgs(args: any[]): void;
-        getEvalOrigin(): StackFrame;
-        setEvalOrigin(stackframe: StackFrame): void;
-        getIsConstructor(): boolean;
-        setIsConstructor(isConstructor: boolean): void;
-        getIsEval(): boolean;
-        setIsEval(isEval: boolean): void;
-        getIsNative(): boolean;
-        setIsNative(isNative: boolean): void;
-        getIsToplevel(): boolean;
-        setIsToplevel(isToplevel: boolean): void;
-        getColumnNumber(): number;
-        setColumnNumber(columnNumber: number): void;
-        getLineNumber(): number;
-        setLineNumber(lineNumber: number): void;
-        getFileName(): string;
-        setFileName(fileName: string): void;
-        getFunctionName(): string;
-        setFunctionName(functionName: string): void;
-        getSource(): string;
-        setSource(source: string): void;
-        toString(): string;
-    }
+    getArgs(): any[];
+    setArgs(args: any[]): void;
+    getEvalOrigin(): StackFrame;
+    setEvalOrigin(stackframe: StackFrame): void;
+    getIsConstructor(): boolean;
+    setIsConstructor(isConstructor: boolean): void;
+    getIsEval(): boolean;
+    setIsEval(isEval: boolean): void;
+    getIsNative(): boolean;
+    setIsNative(isNative: boolean): void;
+    getIsToplevel(): boolean;
+    setIsToplevel(isToplevel: boolean): void;
+    getColumnNumber(): number;
+    setColumnNumber(columnNumber: number): void;
+    getLineNumber(): number;
+    setLineNumber(lineNumber: number): void;
+    getFileName(): string;
+    setFileName(fileName: string): void;
+    getFunctionName(): string;
+    setFunctionName(functionName: string): void;
+    getSource(): string;
+    setSource(source: string): void;
+    toString(): string;
 }
