@@ -30,7 +30,7 @@ module.exports = function(config) {
             base: 'SauceLabs',
             browserName: 'safari',
             platform: 'OS X 10.14',
-            version: '12.0'
+            version: 'latest'
         },
         slEdge: {
             base: 'SauceLabs',
@@ -54,7 +54,15 @@ module.exports = function(config) {
             base: 'SauceLabs',
             browserName: 'internet explorer',
             platform: 'Windows 7',
-            version: '9.0'
+            version: '10',
+            'x-ua-compatible': 'IE=EmulateIE9'
+        },
+        slIE8: {
+            base: 'SauceLabs',
+            browserName: 'internet explorer',
+            platform: 'Windows 7',
+            version: '10',
+            'x-ua-compatible': 'IE=EmulateIE8'
         }
     };
 
