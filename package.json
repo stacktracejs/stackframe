@@ -22,7 +22,7 @@
   "devDependencies": {
     "colors": "^1.3.2",
     "del": "^3.0.0",
-    "eslint": "^5.7.0",
+    "eslint": "^5.16.0",
     "gulp": "^3.9.1",
     "gulp-coveralls": "^0.1.4",
     "gulp-eslint": "^5.0.0",
