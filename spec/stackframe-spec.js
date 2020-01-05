@@ -13,6 +13,17 @@ describe('StackFrame', function() {
             };
             expect(fn).toThrow();
         });
+
+        it('works with objects with null prototype', function() {
+            var obj = Object.create(null);
+            obj.fileName = 'foo.js';
+            obj.functionName = 'foo';
+            obj.lineNumber = 1;
+            obj.columnNumber = 42
+            var sf = new StackFrame(obj);
+            
+            expect(sf.fileName).toEqual('foo.js');
+        });
     });
 
     describe('#setFunctionName', function() {
