@@ -24,16 +24,16 @@
     "jasmine": "^3.2.0",
     "jasmine-core": "^3.2.1",
     "karma": "^4.4.1",
-    "karma-chrome-launcher": "^2.2.0",
+    "karma-chrome-launcher": "^3.1.0",
     "karma-coverage": "^1.1.2",
     "karma-coveralls": "^2.1.0",
-    "karma-firefox-launcher": "^1.1.0",
+    "karma-firefox-launcher": "^1.2.0",
     "karma-ie-launcher": "^1.0.0",
     "karma-jasmine": "^1.1.2",
     "karma-opera-launcher": "^1.0.0",
     "karma-phantomjs-launcher": "^1.0.4",
     "karma-safari-launcher": "^1.0.0",
-    "karma-sauce-launcher": "^1.2.0",
+    "karma-sauce-launcher": "^2.0.2",
     "karma-spec-reporter": "0.0.32",
     "uglify-es": "^3.3.9"
   },
@@ -44,7 +44,7 @@
   "scripts": {
     "lint": "eslint --fix .",
     "test": "karma start karma.conf.js --single-run",
-    "test-pr": "karma start karma.conf.js  --single-run --browsers Firefox,Chrome_Travis",
+    "test-pr": "karma start karma.conf.js --single-run --browsers Firefox,Chrome_Travis",
     "test-ci": "karma start karma.conf.ci.js --single-run",
     "prepare": "cp stackframe.js dist/ && uglifyjs stackframe.js -o dist/stackframe.min.js --compress --mangle --source-map \"url=stackframe.min.js.map\""
   }
