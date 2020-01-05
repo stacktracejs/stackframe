@@ -19,7 +19,7 @@ describe('StackFrame', function() {
             obj.fileName = 'foo.js';
             obj.functionName = 'foo';
             obj.lineNumber = 1;
-            obj.columnNumber = 42
+            obj.columnNumber = 42;
             var sf = new StackFrame(obj);
             
             expect(sf.fileName).toEqual('foo.js');
