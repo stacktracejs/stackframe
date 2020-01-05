@@ -6,43 +6,6 @@ module.exports = function(config) {
 
     // Check out https://saucelabs.com/platforms for all browser/platform combos
     var customLaunchers = {
-        slIOS8: {
-            base: 'SauceLabs',
-            browserName: 'iPhone',
-            platform: 'OS X 10.10',
-            version: '8.4'
-        },
-        slIOS9: {
-            base: 'SauceLabs',
-            browserName: 'iPhone',
-            platform: 'OS X 10.11',
-            version: '9.2'
-        },
-        // *Sigh* Cannot get this working with appium or selenium...
-        // slIOS10: {
-        //     base: 'SauceLabs',
-        //     browserName: 'iPhone',
-        //     platform: 'macOS 10.12',
-        //     version: '10.2'
-        // },
-        slAndroid4: {
-            base: 'SauceLabs',
-            browserName: 'Android',
-            platform: 'Linux',
-            version: '4.4'
-        },
-        slAndroid5: {
-            base: 'SauceLabs',
-            browserName: 'Android',
-            platform: 'Linux',
-            version: '5.1'
-        },
-        slAndroid6: {
-            base: 'SauceLabs',
-            browserName: 'Android',
-            platform: 'Linux',
-            version: '6.0'
-        },
         slChrome: {
             base: 'SauceLabs',
             browserName: 'chrome',
@@ -58,44 +21,22 @@ module.exports = function(config) {
             browserName: 'firefox',
             version: 'latest'
         },
-        // slFirefoxBeta: {
-        //     base: 'SauceLabs',
-        //     browserName: 'firefox',
-        //     version: 'beta'
-        // },
-        slSafari8: {
+        slFirefoxBeta: {
+            base: 'SauceLabs',
+            browserName: 'firefox',
+            version: 'beta'
+        },
+        slSafari: {
             base: 'SauceLabs',
             browserName: 'safari',
-            platform: 'OS X 10.10',
-            version: '8.0'
+            platform: 'OS X 10.14',
+            version: '12.0'
         },
-        slSafari9: {
-            base: 'SauceLabs',
-            browserName: 'safari',
-            platform: 'OS X 10.11',
-            version: '9.0'
-        },
-        slSafari10: {
-            base: 'SauceLabs',
-            browserName: 'safari',
-            platform: 'macOS 10.12',
-            version: '10.0'
-        },
-        slOpera: {
-            base: 'SauceLabs',
-            browserName: 'opera'
-        },
-        slEdge14: {
+        slEdge: {
             base: 'SauceLabs',
             browserName: 'microsoftedge',
             platform: 'Windows 10',
-            version: '14.14393'
-        },
-        slEdge13: {
-            base: 'SauceLabs',
-            browserName: 'microsoftedge',
-            platform: 'Windows 10',
-            version: '13.10586'
+            version: 'latest'
         },
         slIE11: {
             base: 'SauceLabs',
@@ -106,7 +47,7 @@ module.exports = function(config) {
         slIE10: {
             base: 'SauceLabs',
             browserName: 'internet explorer',
-            platform: 'Windows 8',
+            platform: 'Windows 7',
             version: '10'
         },
         slIE9: {
@@ -115,19 +56,6 @@ module.exports = function(config) {
             platform: 'Windows 7',
             version: '9.0'
         }
-        // Too unreliable on Sauce :(
-        // slIE8: {
-        //     base: 'SauceLabs',
-        //     browserName: 'internet explorer',
-        //     platform: 'Windows XP',
-        //     version: '8.0'
-        // }
-        //slIE7: {
-        //    base: 'SauceLabs',
-        //    browserName: 'internet explorer',
-        //    platform: 'Windows XP',
-        //    version: '7'
-        //}
     };
 
     config.set({
