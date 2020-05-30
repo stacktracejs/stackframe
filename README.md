@@ -19,6 +19,7 @@ var stackFrame = new StackFrame({
     isEval: true,
     isNative: false,
     source: 'ORIGINAL_STACK_LINE'
+    evalOrigin: new StackFrame({functionName: 'withinEval', lineNumber: 2, columnNumber: 43})
 });
 
 stackFrame.functionName      // => "funName"
@@ -49,9 +50,13 @@ stackFrame.isEval            // => true
 stackFrame.setIsEval(false)
 stackFrame.getIsEval()       // => false
 
-stackFrame.isNative            // => false
+stackFrame.isNative          // => false
 stackFrame.setIsNative(true)
-stackFrame.getIsNative()       // => true
+stackFrame.getIsNative()     // => true
+
+stackFrame.evalOrigin                         // => StackFrame({functionName: 'withinEval', lineNumber: ...})
+stackFrame.setEvalOrigin({functionName: 'evalFn', fileName: 'anonymous'})
+stackFrame.getEvalOrigin().getFunctionName()  // => 'evalFn'
 
 stackFrame.toString() // => 'funName(args)@http://localhost:3000/file.js:325:20'
 ```

@@ -19,6 +19,7 @@ declare namespace StackFrame {
         functionName?: string;
         source?: string;
         args?: any[];
+        evalOrigin?: StackFrame;
     }
 }
 
