@@ -21,7 +21,7 @@ describe('StackFrame', function() {
             obj.lineNumber = 1;
             obj.columnNumber = 42;
             var sf = new StackFrame(obj);
-            
+
             expect(sf.fileName).toEqual('foo.js');
         });
     });
@@ -57,7 +57,7 @@ describe('StackFrame', function() {
 
         it('throws an error given a non-Object', function() {
             expect(function() {
-                unit.setEvalOrigin('BOGUS');
+                new StackFrame({evalOrigin: 'BOGUS'});
             }).toThrow(new TypeError('Eval Origin must be an Object or StackFrame'));
         });
 
@@ -69,6 +69,12 @@ describe('StackFrame', function() {
         it('handles given Object', function() {
             unit.setEvalOrigin({functionName: 'evalFn'});
             expect(unit.getEvalOrigin().getFunctionName()).toEqual('evalFn');
+        });
+
+        it('handles nested eval origins', function() {
+            unit.setEvalOrigin({functionName: 'evalFn', evalOrigin: {functionName: 'innerEval'}});
+            expect(unit.getEvalOrigin().getFunctionName()).toEqual('evalFn');
+            expect(unit.evalOrigin.evalOrigin.functionName).toEqual('innerEval');
         });
     });
 

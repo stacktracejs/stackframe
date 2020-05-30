@@ -6,7 +6,7 @@
     "Victor Homyakov <vkhomyackov@gmail.com> (https://github.com/victor-homyakov)",
     "Oliver Salzburg (https://github.com/oliversalzburg)"
   ],
-  "version": "1.1.1",
+  "version": "1.2.0",
   "license": "MIT",
   "keywords": [
     "stacktrace",
@@ -25,7 +25,7 @@
     "jasmine-core": "^3.5.0",
     "karma": "^4.4.1",
     "karma-chrome-launcher": "^3.1.0",
-    "karma-coverage": "^2.0.1",
+    "karma-coverage": "^2.0.2",
     "karma-coveralls": "^2.1.0",
     "karma-firefox-launcher": "^1.2.0",
     "karma-ie-launcher": "^1.0.0",
