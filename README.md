@@ -1,7 +1,13 @@
 stackframe 
 ==========
 ## JS Object representation of a stack frame
-[![Build Status](https://travis-ci.org/stacktracejs/stackframe.svg?branch=master)](https://travis-ci.org/stacktracejs/stackframe) [![Coverage Status](https://img.shields.io/coveralls/stacktracejs/stackframe.svg)](https://coveralls.io/r/stacktracejs/stackframe?branch=master) [![GitHub license](https://img.shields.io/github/license/stacktracejs/stackframe.svg)](https://opensource.org/licenses/MIT)
+[![Build Status](https://img.shields.io/travis/stacktracejs/stackframe/master.svg?style=flat-square)](https://travis-ci.org/stacktracejs/stackframe)
+[![Coverage Status](https://img.shields.io/coveralls/stacktracejs/stackframe.svg?style=flat-square))](https://coveralls.io/r/stacktracejs/stackframe?branch=master)
+[![GitHub license](https://img.shields.io/github/license/stacktracejs/stackframe.svg?style=flat-square)](https://opensource.org/licenses/MIT)
+[![dependencies](https://img.shields.io/badge/dependencies-0-green.svg?style=flat-square)](https://github.com/stacktracejs/stackframe/releases)
+[![gzip size](https://img.shields.io/badge/gzipped-0.96k-green.svg?style=flat-square)](https://github.com/stacktracejs/stackframe/releases)
+[![module format](https://img.shields.io/badge/module%20format-umd-lightgrey.svg?style=flat-square&colorB=ff69b4)](https://github.com/stacktracejs/stackframe/releases)
+[![code of conduct](https://img.shields.io/badge/code%20of-conduct-lightgrey.svg?style=flat-square&colorB=ff69b4)](http://todogroup.org/opencodeofconduct/#stacktrace.js/me@eriwen.com)
 
 Underlies functionality of other modules within [stacktrace.js](https://www.stacktracejs.com).
 
