@@ -2,7 +2,7 @@ stackframe
 ==========
 ## JS Object representation of a stack frame
 
-![Build Status](https://img.shields.io/github/checks-status/stacktracejs/stackframe/master?style=flat-square)
+[![Build Status](https://img.shields.io/github/workflow/status/stacktracejs/stackframe/Continuous%20Integration/master?logo=github&style=flat-square)](https://github.com/stacktracejs/stackframe/actions?query=workflow%3AContinuous+Integration+branch%3Amaster)
 [![Coverage Status](https://img.shields.io/coveralls/stacktracejs/stackframe.svg?style=flat-square)](https://coveralls.io/r/stacktracejs/stackframe?branch=master)
 [![GitHub license](https://img.shields.io/github/license/stacktracejs/stackframe.svg?style=flat-square)](https://opensource.org/licenses/MIT)
 [![dependencies](https://img.shields.io/badge/dependencies-0-green.svg?style=flat-square)](https://github.com/stacktracejs/stackframe/releases)
