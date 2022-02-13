@@ -68,6 +68,7 @@ module.exports = function(config) {
 
     config.set({
         basePath: '',
+        concurrency: 3,
         frameworks: ['jasmine'],
         files: [
             'stackframe.js',
@@ -84,11 +85,11 @@ module.exports = function(config) {
         captureTimeout: 240000,
         sauceLabs: {
             testName: 'stackframe unit tests',
+            commandTimeout: 600,
+            idleTimeout: 600,
             recordScreenshots: false,
-            connectOptions: {
-                port: 5757,
-                logfile: 'sauce_connect.log'
-            }
+            recordVideo: false,
+            retryLimit: 3
         },
         customLaunchers: customLaunchers,
         browsers: Object.keys(customLaunchers),
