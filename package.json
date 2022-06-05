@@ -44,7 +44,7 @@
   "scripts": {
     "lint": "eslint",
     "test": "karma start karma.conf.js --single-run",
-    "test-pr": "karma start karma.conf.js --single-run --browsers Firefox,Chrome_Travis",
+    "test-pr": "karma start karma.conf.js --single-run --browsers Firefox,Chrome_No_Sandbox",
     "test-ci": "karma start karma.conf.ci.js --single-run",
     "prepare": "cp stackframe.js dist/ && uglifyjs stackframe.js -o dist/stackframe.min.js --compress --mangle --source-map \"url=stackframe.min.js.map\""
   }
