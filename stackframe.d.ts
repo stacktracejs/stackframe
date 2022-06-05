@@ -1,11 +1,7 @@
-// Type definitions for StackFrame v1.2.0
+// Type definitions for StackFrame v1.3.0
 // Project: https://github.com/stacktracejs/stackframe
 // Definitions by: Eric Wendelin <https://www.eriwen.com>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
-
-export as namespace StackFrame;  // global for non-module UMD users
-
-export = StackFrame;
 
 declare namespace StackFrame {
     export interface StackFrameOptions {
@@ -72,3 +68,5 @@ declare class StackFrame {
 
     toString(): string;
 }
+
+export default StackFrame;
