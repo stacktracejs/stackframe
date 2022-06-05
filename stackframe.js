@@ -6,7 +6,7 @@
     if (typeof define === 'function' && define.amd) {
         define('stackframe', [], factory);
     } else if (typeof exports === 'object') {
-        module.exports = factory();
+        module.exports.default = factory();
     } else {
         root.StackFrame = factory();
     }
