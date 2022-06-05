@@ -19,7 +19,7 @@ module.exports = function (config) {
         browsers: ['PhantomJS'],
         reporters: ['spec', 'saucelabs', 'coverage', 'coveralls'],
         preprocessors: {
-            'error-stack-parser.js': 'coverage'
+            'stackframe.js': 'coverage'
         },
         coverageReporter: {
             type: 'lcov',
