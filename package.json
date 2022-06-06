@@ -41,6 +41,14 @@
     "url": "https://github.com/stacktracejs/stackframe/issues"
   },
   "main": "./stackframe.js",
+  "typings": "./stackframe.d.ts",
+  "files": [
+    "LICENSE",
+    "README.md",
+    "stackframe.js",
+    "stackframe.d.ts",
+    "dist/"
+  ],
   "scripts": {
     "lint": "eslint",
     "test": "karma start karma.conf.js --single-run",
